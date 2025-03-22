@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdoname Pieri :C </title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1c999991, #ff50b0);
+            position: relative;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            color: #000;
+            font-size: 36px;
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            position: absolute;
+            top: 80px;
+            width: 100%;
+            color: #000;
+            font-size: 18px;
+            z-index: 10;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .flower {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            animation: fall linear infinite;
+            border-radius: 50%;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .button-container {
+            position: absolute;
+            top: 150px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-yes {
+            background-color: #32CD32;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 128, 0, 0.3);
+        }
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 128, 0, 0.5);
+        }
+        .btn-no {
+            background-color: #FF6347;
+            color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+        }
+        .btn-no:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 69, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>ESTA PAGINA VA DEDICADA PARA PIERINA</h1>
+    <p>Si estas interesada en escuchar mis disculpas Presiona si, y si no, pues no me importa pq no vas a poder presionar no.</p>
+    
+    <div class="button-container">
+        <button class="btn btn-yes" onclick="showMessage()">Sí</button>
+        <button class="btn btn-no" onmouseover="moveButton()">No</button>
+    </div>
+    
+    <script>
+        window.onload = function () {
+            const images = [
+                'https://th.bing.com/th/id/OIP.0kWOG1VAJ3qJE0_BKamRXQHaHa?rs=1&pid=ImgDetMain',
+                'https://th.bing.com/th/id/OIP.ykCPKZ4-c5ONMkysCfwCrgHaHa?rs=1&pid=ImgDetMain',
+                'https://www.pngmart.com/files/2/Taylor-Swift-PNG-Photos.png'
+            ];
+
+            function createFlower() {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.style.left = Math.random() * window.innerWidth + 'px';
+                flower.style.animationDuration = (Math.random() * 4 + 2) + 's';
+                flower.style.backgroundImage = `url(${images[Math.floor(Math.random() * images.length)]})`;
+                flower.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                document.body.appendChild(flower);
+
+                setTimeout(() => {
+                    flower.remove();
+                }, 6000);
+            }
+
+            setInterval(createFlower, 100);
+        };
+
+        function showMessage() {
+            alert("¡Gracias por elegir Sí y por esta segunda oportunidad ! Ahora vuelve al chat, .");
+        }
+
+        function moveButton() {
+            const button = document.querySelector(".btn-no");
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
